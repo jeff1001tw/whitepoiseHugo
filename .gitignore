@@ -1,0 +1,21 @@
+# Hugo build artifacts
+/public/
+/resources/
+.hugo_build.lock
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+
+# Node modules (if using npm/yarn)
+node_modules/
+
+# Theme dependencies (if using git submodules)
+# themes/
