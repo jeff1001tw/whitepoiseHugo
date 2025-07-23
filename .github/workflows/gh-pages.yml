@@ -1,0 +1,31 @@
+name: Hugo Pages 自動部署
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取得原始碼
+        uses: actions/checkout@v4
+
+      - name: 設定 Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.148.1'
+
+      - name: 建構靜態網站
+        run: hugo --minify
+
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          external_repository: jeff1001tw/whitepoise
+          publish_branch: gh-pages
+          user_name: jeff1001tw
+          user_email: jeff1001tw@gmail.com
